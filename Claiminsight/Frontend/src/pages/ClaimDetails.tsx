@@ -10,10 +10,11 @@ export default function ClaimDetails() {
 
   useEffect(() => {
     const loadPdf = async () => {
-      const blob = await downloadClaimPdf(id!);
-      const url = URL.createObjectURL(
-        new Blob([blob], { type: "application/pdf" })
-      );
+      if (!id) return;
+
+      const blob = await downloadClaimPdf(id); // ✅ Blob
+      const url = URL.createObjectURL(blob);
+
       setPdfUrl(url);
       setLoading(false);
     };
@@ -26,18 +27,18 @@ export default function ClaimDetails() {
   }, [id]);
 
   const handleDownload = async () => {
-    const blob = await downloadClaimPdf(id!);
+    if (!id) return;
 
-    const url = URL.createObjectURL(
-      new Blob([blob], { type: "application/pdf" })
-    );
+    const blob = await downloadClaimPdf(id);
+    const url = URL.createObjectURL(blob);
 
     const a = document.createElement("a");
     a.href = url;
-    a.download = `claim-${id}.pdf`; // ✅ FORCE EXTENSION
+    a.download = `claim-${id}.pdf`;
     document.body.appendChild(a);
     a.click();
     a.remove();
+
     URL.revokeObjectURL(url);
   };
 
