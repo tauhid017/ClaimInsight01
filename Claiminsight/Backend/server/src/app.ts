@@ -11,15 +11,21 @@ const app = express();
 
 /* ================= CORE MIDDLEWARES ================= */
 
-// ✅ Allow frontend (Vite)
+// ✅ CORS (DEV + PROD)
 app.use(
   cors({
-    origin: "http://localhost:5174",
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: [
+      "http://localhost:5174"            // local dev
+    //   "https://claiminsight01.vercel.app"       // 🔁 replace with your frontend URL
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
   })
 );
+
+// ✅ Handle preflight requests explicitly
+app.options("*", cors());
 
 // ✅ Parse JSON bodies
 app.use(express.json());
