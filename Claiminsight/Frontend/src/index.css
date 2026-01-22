@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-light text-primary;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+.input {
+  @apply w-full px-4 py-3 rounded-lg bg-black/40 text-white border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-500/40;
+}
