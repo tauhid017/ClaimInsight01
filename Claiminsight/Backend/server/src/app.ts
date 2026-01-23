@@ -16,7 +16,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5174",            // local dev 
-      "https://claim-insight01-khde.vercel.app/"      // 🔁 replace with your frontend URL
+      "https://claim-insight01-khde.vercel.app"      // 🔁 replace with your frontend URL
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
