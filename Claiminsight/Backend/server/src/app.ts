@@ -15,8 +15,8 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "http://localhost:5174"            // local dev
-    //   "https://claiminsight01.vercel.app"       // 🔁 replace with your frontend URL
+      "http://localhost:5174",            // local dev 
+      "https://claim-insight01-khde.vercel.app/"      // 🔁 replace with your frontend URL
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
